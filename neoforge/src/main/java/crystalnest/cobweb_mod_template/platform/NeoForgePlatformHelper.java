@@ -1,5 +1,6 @@
 package crystalnest.cobweb_mod_template.platform;
 
+import crystalnest.cobweb_mod_template.platform.model.Platform;
 import crystalnest.cobweb_mod_template.platform.services.PlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
@@ -9,8 +10,8 @@ import net.neoforged.fml.loading.FMLLoader;
  */
 public class NeoForgePlatformHelper implements PlatformHelper {
   @Override
-  public String getPlatformName() {
-    return "NeoForge";
+  public Platform getPlatformName() {
+    return Platform.NEOFORGE;
   }
 
   @Override

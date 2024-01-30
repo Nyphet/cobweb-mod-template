@@ -1,5 +1,8 @@
 package crystalnest.cobweb_mod_template.platform.services;
 
+import crystalnest.cobweb_mod_template.platform.model.Environment;
+import crystalnest.cobweb_mod_template.platform.model.Platform;
+
 /**
  * Platform specific helper.
  */
@@ -9,7 +12,7 @@ public interface PlatformHelper {
    *
    * @return The name of the current platform.
    */
-  String getPlatformName();
+  Platform getPlatformName();
 
   /**
    * Checks if a mod with the given id is loaded.
@@ -31,7 +34,7 @@ public interface PlatformHelper {
    *
    * @return The name of the environment type.
    */
-  default String getEnvironmentName() {
-    return isDevEnv() ? "development" : "production";
+  default Environment getEnvironment() {
+    return isDevEnv() ? Environment.DEV : Environment.PROD;
   }
 }
