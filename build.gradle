@@ -1,16 +1,16 @@
 plugins {
   // Required for NeoGradle
   id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.7"
-  id "com.modrinth.minotaur" version "2.+" apply false // BREAKS
-  id "com.matthewprenger.cursegradle" version "1.4.+" apply false // BREAKS
-  id "com.github.breadmoirai.github-release" version "2.4.+" apply false // BREAKS
+  id "com.modrinth.minotaur" version "2.+" apply false
+  id "com.matthewprenger.cursegradle" version "1.4.+" apply false
+  id "com.github.breadmoirai.github-release" version "2.5.+" apply false // BREAKS
 }
 
 subprojects { subproject ->
   apply plugin: "java"
-  apply plugin: "com.modrinth.minotaur" // BREAKS
-  apply plugin: "com.matthewprenger.cursegradle" // BREAKS
-  apply plugin: "com.github.breadmoirai.github-release" // BREAKS
+  apply plugin: "com.modrinth.minotaur"
+  apply plugin: "com.matthewprenger.cursegradle"
+  // apply plugin: "com.github.breadmoirai.github-release" // BREAKS
 
   java.toolchain.languageVersion = JavaLanguageVersion.of(17)
   java.withSourcesJar()
@@ -89,7 +89,6 @@ subprojects { subproject ->
     enabled = false
   }
 
-  // FROM HERE TO THE END IT BREAKS
   def changelog_body = "See [Changelog](https://github.com/${github_user}/${mod_id_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
 
   if (file("../api-keys.properties").exists()) {
@@ -121,7 +120,8 @@ subprojects { subproject ->
   }
   def noPublish = loader == "common"
 
-  githubRelease {
+  // FROM HERE IT BREAKS
+  /*githubRelease {
     token api_keys.github
     owner github_user
     repo mod_id_kebab
@@ -136,7 +136,8 @@ subprojects { subproject ->
     allowUploadToExisting true
     overwrite false
     dryRun noPublish
-  }
+  }*/
+  // END OF WHERE IT BREAKS
 
   modrinth {
     token = api_keys.modrinth
@@ -198,11 +199,10 @@ subprojects { subproject ->
   tasks.register('publish') {
     group = "publishing"
     description = "Publish all loader specific versions to all platforms"
-    dependsOn 'githubRelease'
+    //dependsOn 'githubRelease'
     dependsOn 'modrinth'
     dependsOn 'curseforge'
-    tasks.findByName('modrinth').mustRunAfter 'githubRelease'
+    //tasks.findByName('modrinth').mustRunAfter 'githubRelease'
     tasks.findByName('curseforge').mustRunAfter 'modrinth'
   }
-  // END OF WHERE IT BREAKS
 }
