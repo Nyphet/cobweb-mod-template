@@ -13,7 +13,7 @@ Multiloader template for Minecraft mods!
 Built on [Jared's MultiLoaderTemplate](https://github.com/jaredlll08/MultiLoader-Template), with the addition of:
 
 - Tasks to publish on GitHub, Modrinth, and CurseForge.
-- [Cobweb]() API dependency.
+- [Cobweb](https://modrinth.com/mod/cobweb) API dependency.
 - Some predefined gradle properties to quickly develop my own mods.
 - A little bit more Javadoc.
 - Code style changes.
