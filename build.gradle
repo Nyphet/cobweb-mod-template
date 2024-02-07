@@ -59,15 +59,15 @@ subprojects { subproject ->
   processResources {
     def expandProps = [
       "mod_version"                  : mod_version,
-      "group"                        : project.group,
+      "group"                        : group,
       "mod_authors"                  : mod_authors,
       "mod_title"                    : mod_title,
       "mod_id"                       : mod_id,
       "mod_id_kebab"                 : mod_id_kebab,
       "license"                      : license,
-      "description"                  : project.description,
+      "description"                  : description,
       "credits"                      : credits,
-      "github_user"                  : github_user,
+      "github_user"                 : github_user,
       "curseforge_id"                : curseforge_id,
       "minecraft_version"            : minecraft_version,
       "minecraft_version_range"      : minecraft_version_range,
@@ -200,7 +200,7 @@ subprojects { subproject ->
     dependsOn 'githubRelease'
     dependsOn 'modrinth'
     dependsOn 'curseforge'
-    tasks.findByName('modrinth').mustRunAfter 'githubRelease'
-    tasks.findByName('curseforge').mustRunAfter 'modrinth'
+    tasks.named('modrinth').mustRunAfter 'githubRelease'
+    tasks.named('curseforge').mustRunAfter 'modrinth'
   }
 }
