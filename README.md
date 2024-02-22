@@ -1,3 +1,4 @@
+DEMO_PROXY
 ![Cobweb Mod Template banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/cobweb-mod-template/banner.png "Cobweb Mod Template banner")
 
 ---
