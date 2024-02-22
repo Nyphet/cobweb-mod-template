@@ -35,7 +35,7 @@ To complete the setup:
 
 ## Removing Platforms and Loaders
 
-While this template includes support for Fabric, Forge, and NeoForge you can easily remove support for the ones you don't need.  
+While this template includes support for Fabric, Forge, and NeoForge, you can easily remove support for the ones you don't need.  
 This can be done by deleting the subproject folder and then removing it from the associated `include` in the `settings.gradle` file.
 
 The same thing applies for the different publishing platforms, GitHub, Modrinth, and CurseForge.  
