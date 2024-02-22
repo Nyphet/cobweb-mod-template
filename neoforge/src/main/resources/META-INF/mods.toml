@@ -1,5 +1,5 @@
 modLoader = "javafml" #mandatory
-loaderVersion = "${neoforge_loader_version_range}" #mandatory
+loaderVersion = "[2,)" #mandatory
 license = "${license}" #mandatory
 issueTrackerURL="https://github.com/${github_user}/${mod_id_kebab}/issues" #optional
 [[mods]] #mandatory
