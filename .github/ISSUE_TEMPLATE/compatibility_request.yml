@@ -5,7 +5,7 @@ assignees: ["Crystal-Spider"]
 body:
 - type: checkboxes
   attributes:
-    label: I have confirmed no other issues ask for this
+    label: I have confirmed no other issue asks for this
     description: Please search if an issue already exists for the compatibility you wish for.
     options:
     - label: I have searched for existing issues
