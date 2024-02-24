@@ -1,6 +1,7 @@
 name: 🐞Bug report 
 description: File a bug report
 labels: ["bug"]
+assignees: ["Crystal-Spider"]
 body:
 - type: checkboxes
   attributes:
