@@ -8,14 +8,19 @@ body:
     description: Please search to see if an issue already exists for the bug you encountered.
     options:
     - label: I have searched the existing issues
+      required: true
 - type: textarea
   attributes:
     label: Current Behavior
     description: A concise description of what you're experiencing.
+  validations:
+    required: true
 - type: textarea
   attributes:
     label: Expected Behavior
     description: A concise description of what you expected to happen.
+  validations:
+    required: true
 - type: textarea
   attributes:
     label: Steps To Reproduce
@@ -32,6 +37,8 @@ body:
       Which Minecraft Version 
     placeholder: |
       Version ...
+  validations:
+    required: true
 - type: input
   attributes:
     label: Mod loader
@@ -39,6 +46,8 @@ body:
       Which Mod loader Version 
     placeholder: |
       Mod loader ...
+  validations:
+    required: true
 - type: textarea
   attributes:
     label: Anything else?
