@@ -9,7 +9,6 @@ body:
     description: Please search to see if an issue already exists for the bug you encountered.
     options:
     - label: I have searched the existing issues
-      required: true
 - type: textarea
   attributes:
     label: Current Behavior
@@ -34,8 +33,6 @@ body:
       Which Minecraft Version 
     placeholder: |
       Version ...
-    render: markdown
-    required: true
 - type: input
   attributes:
     label: Mod loader
@@ -43,8 +40,6 @@ body:
       Which Mod loader Version 
     placeholder: |
       Mod loader ...
-    render: markdown
-    required: true
 - type: textarea
   attributes:
     label: Anything else?
