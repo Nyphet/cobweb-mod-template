@@ -1,4 +1,4 @@
-name: 🐞Bug report 
+name: 🐞 Bug report 
 description: File a bug report
 labels: ["bug", "medium priority"]
 assignees: ["Crystal-Spider"]
