@@ -1,30 +1,27 @@
-# Description
-
-Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
-
-Fixes # (issue)
-
 ## Type of change
 
-Please delete options that are not relevant.
+Please select the option(s) that are relevant.  
+To select an option, change `[ ]` to `[x]`.
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
+- [ ] Documentation enhancement (documentation related update)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
+# Description
+
+Describe the reason behind your changes, including relevant motivation and context.  
+If applicable, link the issue that this PR would fix (to link and issue, simply write `#N` where `N` is the issue number)
+
+# Changes summary
+
+Please include a detailed summary of the changes.
+
 # How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
-
-- [ ] Test A
-- [ ] Test B
-
-**Test Configuration**:
-* Firmware version:
-* Hardware:
-* Toolchain:
-* SDK:
+Please describe the tests that you ran to verify your changes.  
+Provide instructions to reproduce, and include your relevant setup.
 
 # Checklist:
 
