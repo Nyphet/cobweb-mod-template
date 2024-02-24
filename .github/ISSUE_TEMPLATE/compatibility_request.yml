@@ -29,15 +29,6 @@ body:
     description: A concise description of what you'd like to happen.
   validations:
     required: true
-- type: input
-  attributes:
-    label: Mod version
-    description: |
-      Mod version used.
-    placeholder: |
-      E.g. 1.0.0.0
-  validations:
-    required: true
 - type: textarea
   attributes:
     label: Stacktrace and logs
