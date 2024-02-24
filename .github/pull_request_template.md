@@ -23,13 +23,7 @@ Please include a detailed summary of the changes.
 Please describe the tests that you ran to verify your changes.  
 Provide instructions to reproduce, and include your relevant setup.
 
-# Checklist:
+# Guidelines:
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+Please check the element below.  
+- [ ] I have read and thoroughly followed the [contributing guidelines](https://github.com/Crystal-Nest/cobweb-mod-template/blob/master/.github/CONTRIBUTING.md), and my code abides by this project's [code style](https://github.com/Crystal-Nest/cobweb-mod-template/blob/master/.github/CONTRIBUTING.md#code-style).
