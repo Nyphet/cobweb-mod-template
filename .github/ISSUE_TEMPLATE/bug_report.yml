@@ -33,16 +33,21 @@ body:
       1. See error...
   validations:
     required: false
-- type: textarea
+- type: input
   attributes:
-    label: Vertion
+    label: Version
     description: |
-      examples:
-        - Java 1.20.0
+      Witch Minecraft Version 
     value: |
-        - OS:
-        - Node:
-        - npm:
+    render: markdown
+  validations:
+    required: true
+    - type: input
+  attributes:
+    label: Mod loader
+    description: |
+      Witch Mod loader Version 
+    value: |
     render: markdown
   validations:
     required: true
