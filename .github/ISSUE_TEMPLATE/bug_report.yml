@@ -39,6 +39,7 @@ body:
     description: |
       Witch Minecraft Version 
     value: |
+      Version ...
     render: markdown
   validations:
     required: true
@@ -48,6 +49,7 @@ body:
     description: |
       Witch Mod loader Version 
     value: |
+      Mod loader ...
     render: markdown
   validations:
     required: true
