@@ -1,6 +1,6 @@
 # **Support the Crystal Nest!**
 
-[![Website](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/crystal-nest/pic64.png)](https://crystalnest.it)
+[![Crystal Nest Website](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/crystal-nest/pic64.png "Crystal Nest Website")](https://crystalnest.it)
 [![Twitch](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/twitch/twitch64.png "Twitch")](https://www.twitch.tv/crystal_spider_)
 [![Patreon](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/patreon/patreon64.png "Patreon")](https://www.patreon.com/crystalspider)
 [![Ko-fi](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/kofi/kofi64.png "Ko-fi")](https://ko-fi.com/crystalspider)
