@@ -4,7 +4,7 @@ labels: ["bug"]
 body:
 - type: checkboxes
   attributes:
-    label: I have confirmed no other issues for this exist
+    label: I have confirmed no other issues report this bug
     description: Please search if an issue already exists for the bug you've encountered.
     options:
     - label: I have searched for existing issues
