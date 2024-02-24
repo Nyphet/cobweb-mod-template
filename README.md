@@ -54,5 +54,6 @@ This project is published under the [GNU General Public License v3.0](https://gi
 [![GitHub](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/github/github64.png "Our other projects")](https://github.com/crystal-nest)
 [![Modrinth](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/modrinth/modrinth64.png "Modrinth")](https://modrinth.com/user/CrystalSpider)
 [![Curseforge](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/curseforge/curseforge64.png "Curseforge")](https://www.curseforge.com/members/crystal_spider_/projects)
+[![Website](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/crystal-nest/pic64.png)](https://crystalnest.it)
 
 [![Bisect Hosting](https://www.bisecthosting.com/partners/custom-banners/d559b544-474c-4109-b861-1b2e6ca6026a.webp "Bisect Hosting")](https://bisecthosting.com/crystalspider)
