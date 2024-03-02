@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Common shared constants across all loaders.
  */
-public class Constants {
+public final class Constants {
+	private Constants() {}
+
 	/**
 	 * Mod id.
 	 */

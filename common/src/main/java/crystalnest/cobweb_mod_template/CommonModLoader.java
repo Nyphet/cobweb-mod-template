@@ -3,9 +3,13 @@ package crystalnest.cobweb_mod_template;
 /**
  * Common mod loader.
  */
-public class CommonModLoader {
+public final class CommonModLoader {
+  private CommonModLoader() {}
+
   /**
    * Initialize operations common across loaders.
    */
-  public static void init() {}
+  public static void init() {
+    // Initialize common operations here.
+  }
 }
