@@ -1,7 +1,6 @@
 package crystalnest.cobweb_mod_template.platform;
 
 import crystalnest.cobweb_mod_template.Constants;
-import crystalnest.cobweb_mod_template.platform.services.PlatformHelper;
 
 import java.util.ServiceLoader;
 
@@ -10,11 +9,6 @@ import java.util.ServiceLoader;
  * In the context of MultiLoader we use this feature to access a mock API in the common code that is swapped out for the platform specific implementation at runtime.
  */
 public final class Services {
-  /**
-   * Provides information about what platform the mod is running on.
-   */
-  public static final PlatformHelper PLATFORM = load(PlatformHelper.class);
-
   private Services() {}
 
   /**
