@@ -100,21 +100,6 @@ subprojects { subproject ->
 
   def changelog_body = "See [Changelog](https://github.com/${github_user}/${mod_id_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
 
-  if (file("../api-keys.properties").exists()) {
-    file("../api-keys.properties").withReader {
-      Properties props = new Properties()
-      props.load(it)
-      api_keys = props
-    }
-  } else {
-    logger.warn("Missing api-keys.properties file in the project root, publishing won't be possible")
-    api_keys = [
-      github: "",
-      modrinth: "",
-      curseforge: ""
-    ]
-  }
-
   def loader = "common"
   switch (subproject.name) {
     case "fabric":
@@ -130,7 +115,7 @@ subprojects { subproject ->
   def noPublish = loader == "common"
 
   githubRelease {
-    token api_keys.github
+    token = providers.environmentVariable("GITHUB_TOKEN")
     owner = github_user
     repo = mod_id_kebab
     tagName = "v${minecraft_version}-${mod_version}"
@@ -147,7 +132,7 @@ subprojects { subproject ->
   }
 
   modrinth {
-    token = api_keys.modrinth
+    token = providers.environmentVariable("MODRINTH_TOKEN")
     projectId = mod_id_kebab
     versionNumber = mod_version
     versionName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
@@ -171,7 +156,7 @@ subprojects { subproject ->
   }
 
   curseforge {
-    apiKey = api_keys.curseforge
+    apiKey = providers.environmentVariable("CURSEFORGE_TOKEN")
     project {
       id = curseforge_id
       changelogType = "markdown"
