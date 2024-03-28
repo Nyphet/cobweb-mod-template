@@ -115,7 +115,7 @@ subprojects { subproject ->
   def noPublish = loader == "common"
 
   githubRelease {
-    token = providers.environmentVariable("GITHUB_TOKEN")
+    token = System.getenv("GITHUB_TOKEN")
     owner = github_user
     repo = mod_id_kebab
     tagName = "v${minecraft_version}-${mod_version}"
@@ -132,7 +132,7 @@ subprojects { subproject ->
   }
 
   modrinth {
-    token = providers.environmentVariable("MODRINTH_TOKEN")
+    token = System.getenv("MODRINTH_TOKEN")
     projectId = mod_id_kebab
     versionNumber = mod_version
     versionName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
@@ -156,7 +156,7 @@ subprojects { subproject ->
   }
 
   curseforge {
-    apiKey = providers.environmentVariable("CURSEFORGE_TOKEN")
+    apiKey = System.getenv("CURSEFORGE_TOKEN")
     project {
       id = curseforge_id
       changelogType = "markdown"
