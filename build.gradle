@@ -20,6 +20,7 @@ subprojects { subproject ->
   apply plugin: "com.modrinth.minotaur"
   apply plugin: "com.matthewprenger.cursegradle"
   apply plugin: "com.github.breadmoirai.github-release"
+  apply plugin: "maven-publish"
 
   java.toolchain.languageVersion = JavaLanguageVersion.of(17)
   java.withSourcesJar()
@@ -57,6 +58,10 @@ subprojects { subproject ->
     maven {
       name = "Sponge / Mixin"
       url = "https://repo.spongepowered.org/repository/maven-public/"
+    }
+    maven {
+      name = "Crystal Nest"
+      url = "https://maven.crystalnest.it"
     }
   }
 
@@ -113,6 +118,50 @@ subprojects { subproject ->
       break
   }
   def noPublish = loader == "common"
+
+  publishing {
+    repositories {
+      maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/${github_user}/${mod_id_kebab}")
+        credentials {
+          username = github_user
+          password = System.getenv("GITHUB_TOKEN") ?: ""
+        }
+      }
+    }
+    publications {
+      gpr(MavenPublication) {
+        groupId = project.group
+        artifactId = "${mod_id_kebab}-${loader.toLowerCase()}"
+        version = "${minecraft_version}-${mod_version}"
+        from components.java
+        pom {
+          name = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
+          description = "${description}"
+          url = "https://github.com/${github_user}/${mod_id_kebab}/tree/${minecraft_version}"
+          issueManagement {
+            system = "github"
+            url = "https://github.com/${github_user}/${mod_id_kebab}/issues"
+          }
+          licenses {
+            license {
+              name = license
+              url = "https://spdx.org/licenses/${license}.html"
+            }
+          }
+          developers {
+            mod_authors.split(", ").each { author ->
+              developer {
+                id = author.toLowerCase()
+                name = author
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   githubRelease {
     token = System.getenv("GITHUB_TOKEN") ?: ""
@@ -188,15 +237,18 @@ subprojects { subproject ->
     }
   }
 
-  tasks.register("publish") {
+  tasks.register("publishLoader") {
     group = "publishing"
-    description = "Publish all loader specific versions to all platforms"
+    description = "Publish ${loader} specific versions to all platforms"
+    dependsOn "publish"
     dependsOn "githubRelease"
-    dependsOn "modrinth"
     dependsOn "curseforge"
+    dependsOn "modrinth"
   }
 }
 
-tasks.register("publish") {
-  dependsOn subprojects.publish
+tasks.register("publishAll") {
+  group = "publishing"
+  description = "Publish all loader specific versions to all platforms"
+  dependsOn subprojects.publishLoader
 }

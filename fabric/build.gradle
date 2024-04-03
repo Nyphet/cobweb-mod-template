@@ -1,7 +1,7 @@
 plugins {
-  id 'java'
-  id 'idea'
-  id 'fabric-loom' version '1.5-SNAPSHOT'
+  id "java"
+  id "idea"
+  id "fabric-loom" version "1.5-SNAPSHOT"
 }
 base {
   archivesName = "${mod_id_kebab}-fabric-${minecraft_version}"
