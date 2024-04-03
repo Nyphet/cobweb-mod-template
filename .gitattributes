@@ -1,5 +1,5 @@
 * text eol=lf
-*.bat text eol=crlf
+*.bat text eol=lf
 *.patch text eol=lf
 *.java text eol=lf
 *.gradle text eol=lf

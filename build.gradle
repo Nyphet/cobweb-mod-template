@@ -9,7 +9,7 @@ plugins {
 
 sonar {
   properties {
-    property "sonar.projectKey", "Crystal-Nest_cobweb-mod-template"
+    property "sonar.projectKey", "Crystal-Nest_${mod_id_kebab}"
     property "sonar.organization", "crystal-nest"
     property "sonar.host.url", "https://sonarcloud.io"
   }
