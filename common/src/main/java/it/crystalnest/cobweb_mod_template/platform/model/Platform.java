@@ -4,8 +4,17 @@ package it.crystalnest.cobweb_mod_template.platform.model;
  * Platform.
  */
 public enum Platform {
+  /**
+   * Fabric loader identifier.
+   */
   FABRIC("fabric"),
+  /**
+   * Fabric loader identifier.
+   */
   FORGE("forge"),
+  /**
+   * Fabric loader identifier.
+   */
   NEOFORGE("neoforge");
 
   /**
