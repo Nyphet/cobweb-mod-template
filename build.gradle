@@ -1,15 +1,25 @@
 plugins {
+  id "org.sonarqube" version "4.4.1.3373"
   id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.7"
   id "com.modrinth.minotaur" version "2.+" apply false
-  id "com.matthewprenger.cursegradle" version "1.4.+" apply false
+  id "me.hypherionmc.cursegradle" version "2.0.1" apply false
   id "com.github.breadmoirai.github-release" version "2.5.+" apply false
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "Crystal-Nest_${mod_id_kebab}"
+    property "sonar.organization", "crystal-nest"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 subprojects { subproject ->
   apply plugin: "java"
   apply plugin: "com.modrinth.minotaur"
-  apply plugin: "com.matthewprenger.cursegradle"
+  apply plugin: "me.hypherionmc.cursegradle"
   apply plugin: "com.github.breadmoirai.github-release"
+  apply plugin: "maven-publish"
 
   java.toolchain.languageVersion = JavaLanguageVersion.of(17)
   java.withSourcesJar()
@@ -47,6 +57,10 @@ subprojects { subproject ->
     maven {
       name = "Sponge / Mixin"
       url = "https://repo.spongepowered.org/repository/maven-public/"
+    }
+    maven {
+      name = "Crystal Nest"
+      url = "https://maven.crystalnest.it"
     }
   }
 
@@ -87,23 +101,8 @@ subprojects { subproject ->
   }
 
   def changelog_body = "See [Changelog](https://github.com/${github_user}/${mod_id_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
-
-  if (file("../api-keys.properties").exists()) {
-    file("../api-keys.properties").withReader {
-      Properties props = new Properties()
-      props.load(it)
-      api_keys = props
-    }
-  } else {
-    logger.warn("Missing api-keys.properties file in the project root, publishing won't be possible")
-    api_keys = [
-      github: "",
-      modrinth: "",
-      curseforge: ""
-    ]
-  }
-
-  def loader = "common"
+  def version_type = mod_version.replaceFirst("([0-9]+\\.?){4}-?", "") ?: "release"
+  def loader = "Common"
   switch (subproject.name) {
     case "fabric":
       loader = "Fabric"
@@ -111,14 +110,55 @@ subprojects { subproject ->
     case "forge":
       loader = "Forge"
       break
-    case "neoforge":
-      loader = "NeoForge"
-      break
   }
-  def noPublish = loader == "common"
+  def noPublish = loader == "Common"
+
+  publishing {
+    repositories {
+      maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/${github_user}/${mod_id_kebab}")
+        credentials {
+          username = github_user
+          password = System.getenv("GITHUB_TOKEN") ?: ""
+        }
+      }
+    }
+    publications {
+      gpr(MavenPublication) {
+        groupId = project.group
+        artifactId = "${mod_id_kebab}-${loader.toLowerCase()}"
+        version = "${minecraft_version}-${mod_version}"
+        from components.java
+        pom {
+          name = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
+          description = "${description}"
+          url = "https://github.com/${github_user}/${mod_id_kebab}/tree/${minecraft_version}"
+          issueManagement {
+            system = "github"
+            url = "https://github.com/${github_user}/${mod_id_kebab}/issues"
+          }
+          licenses {
+            license {
+              name = license
+              url = "https://spdx.org/licenses/${license}.html"
+            }
+          }
+          developers {
+            mod_authors.split(", ").each { author ->
+              developer {
+                id = author.toLowerCase()
+                name = author
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   githubRelease {
-    token api_keys.github
+    token = System.getenv("GITHUB_TOKEN") ?: ""
     owner = github_user
     repo = mod_id_kebab
     tagName = "v${minecraft_version}-${mod_version}"
@@ -127,7 +167,7 @@ subprojects { subproject ->
     generateReleaseNotes = false
     body = changelog_body
     draft = false
-    prerelease = false
+    prerelease = version_type != "release"
     releaseAssets jar
     allowUploadToExisting = true
     overwrite = false
@@ -135,13 +175,13 @@ subprojects { subproject ->
   }
 
   modrinth {
-    token = api_keys.modrinth
+    token = System.getenv("MODRINTH_TOKEN") ?: ""
     projectId = mod_id_kebab
     versionNumber = mod_version
     versionName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
     changelog = changelog_body
     uploadFile = jar
-    versionType = "release"
+    versionType = version_type
     gameVersions = [minecraft_version]
     loaders = [loader.toLowerCase()]
     dependencies {
@@ -159,23 +199,22 @@ subprojects { subproject ->
   }
 
   curseforge {
-    apiKey = api_keys.curseforge
+    apiKey = System.getenv("CURSEFORGE_TOKEN") ?: ""
     project {
       id = curseforge_id
       changelogType = "markdown"
       changelog = changelog_body
-      releaseType = "release"
+      releaseType = version_type
       if (!noPublish) {
         addGameVersion loader
       }
       addGameVersion minecraft_version
       mainArtifact(jar) {
         displayName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
+      }
+      relations {
         switch (loader) {
           case "Fabric":
-            relations {
-              requiredDependency "fabric-api"
-            }
             break
           case "Forge":
             break
@@ -188,16 +227,23 @@ subprojects { subproject ->
       debug = noPublish
       detectNewerJava = true
       forgeGradleIntegration = false
+      fabricIntegration = loader == "Fabric"
+      detectFabricApi = loader == "Fabric"
     }
   }
 
-  tasks.register('publish') {
+  tasks.register("publishLoader") {
     group = "publishing"
-    description = "Publish all loader specific versions to all platforms"
-    dependsOn 'githubRelease'
-    dependsOn 'modrinth'
-    dependsOn 'curseforge'
-    tasks.named('modrinth').mustRunAfter 'githubRelease'
-    tasks.named('curseforge').mustRunAfter 'modrinth'
+    description = "Publish ${loader} specific versions to all platforms"
+    dependsOn "publish"
+    dependsOn "githubRelease"
+    dependsOn "curseforge"
+    dependsOn "modrinth"
   }
+}
+
+tasks.register("publishAll") {
+  group = "publishing"
+  description = "Publish all loader specific versions to all platforms"
+  dependsOn subprojects.publishLoader
 }
