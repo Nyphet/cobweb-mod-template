@@ -3,7 +3,7 @@ plugins {
   // Required for NeoGradle
   id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.7"
   id "com.modrinth.minotaur" version "2.+" apply false
-  id "com.matthewprenger.cursegradle" version "1.4.+" apply false
+  id "me.hypherionmc.cursegradle" version "2.0.1" apply false
   id "com.github.breadmoirai.github-release" version "2.5.+" apply false
 }
 
@@ -18,7 +18,7 @@ sonar {
 subprojects { subproject ->
   apply plugin: "java"
   apply plugin: "com.modrinth.minotaur"
-  apply plugin: "com.matthewprenger.cursegradle"
+  apply plugin: "me.hypherionmc.cursegradle"
   apply plugin: "com.github.breadmoirai.github-release"
   apply plugin: "maven-publish"
 
@@ -104,8 +104,8 @@ subprojects { subproject ->
   }
 
   def changelog_body = "See [Changelog](https://github.com/${github_user}/${mod_id_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
-
-  def loader = "common"
+  def version_type = mod_version.replaceFirst("([0-9]+\\.?){4}-?", "") ?: "release"
+  def loader = "Common"
   switch (subproject.name) {
     case "fabric":
       loader = "Fabric"
@@ -117,7 +117,7 @@ subprojects { subproject ->
       loader = "NeoForge"
       break
   }
-  def noPublish = loader == "common"
+  def noPublish = loader == "Common"
 
   publishing {
     repositories {
@@ -173,7 +173,7 @@ subprojects { subproject ->
     generateReleaseNotes = false
     body = changelog_body
     draft = false
-    prerelease = false
+    prerelease = version_type != "release"
     releaseAssets jar
     allowUploadToExisting = true
     overwrite = false
@@ -187,7 +187,7 @@ subprojects { subproject ->
     versionName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
     changelog = changelog_body
     uploadFile = jar
-    versionType = "release"
+    versionType = version_type
     gameVersions = [minecraft_version]
     loaders = [loader.toLowerCase()]
     dependencies {
@@ -210,18 +210,17 @@ subprojects { subproject ->
       id = curseforge_id
       changelogType = "markdown"
       changelog = changelog_body
-      releaseType = "release"
+      releaseType = version_type
       if (!noPublish) {
         addGameVersion loader
       }
       addGameVersion minecraft_version
       mainArtifact(jar) {
         displayName = "[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}"
+      }
+      relations {
         switch (loader) {
           case "Fabric":
-            relations {
-              requiredDependency "fabric-api"
-            }
             break
           case "Forge":
             break
@@ -234,6 +233,8 @@ subprojects { subproject ->
       debug = noPublish
       detectNewerJava = true
       forgeGradleIntegration = false
+      fabricIntegration = loader == "Fabric"
+      detectFabricApi = loader == "Fabric"
     }
   }
 
