@@ -28,7 +28,7 @@ jobs:
     with:
       loader_forge: true
       loader_fabric: true
-      loader_neoforge: true
+      loader_neoforge: false
       loader_common: true
       platform_maven: true
       platform_github: true

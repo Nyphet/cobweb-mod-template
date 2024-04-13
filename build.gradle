@@ -110,9 +110,6 @@ subprojects { subproject ->
     case "forge":
       loader = "Forge"
       break
-    case "neoforge":
-      loader = "NeoForge"
-      break
   }
   def noPublish = loader == "Common"
 

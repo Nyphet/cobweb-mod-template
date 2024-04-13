@@ -11,11 +11,7 @@ public enum Platform {
   /**
    * Fabric loader identifier.
    */
-  FORGE("forge"),
-  /**
-   * Fabric loader identifier.
-   */
-  NEOFORGE("neoforge");
+  FORGE("forge");
 
   /**
    * Platform name.
