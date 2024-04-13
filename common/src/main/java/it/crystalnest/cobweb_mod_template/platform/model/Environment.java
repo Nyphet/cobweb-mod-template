@@ -4,7 +4,13 @@ package it.crystalnest.cobweb_mod_template.platform.model;
  * Environment.
  */
 public enum Environment {
+  /**
+   * Development environment identifier.
+   */
   DEV("development"),
+  /**
+   * Production environment identifier.
+   */
   PROD("production");
 
   /**
