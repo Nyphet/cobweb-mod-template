@@ -79,7 +79,7 @@ subprojects { subproject ->
       "mod_id"                       : mod_id,
       "mod_id_kebab"                 : mod_id_kebab,
       "license"                      : license,
-      "description"                  : description,
+      "description"                  : project.description,
       "credits"                      : credits,
       "github_user"                  : github_user,
       "curseforge_id"                : curseforge_id,
