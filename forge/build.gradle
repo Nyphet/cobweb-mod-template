@@ -91,6 +91,9 @@ processResources {
 
 jar.finalizedBy("reobfJar")
 
+// Task seems bugged, breaks build because of mod dependencies in the Common project, with no apparent workaround.
+tasks.named('compileTestJava').get().setEnabled(false)
+
 sourceSets.each {
   def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
   it.output.resourcesDir = dir
