@@ -35,6 +35,6 @@ public interface PlatformHelper {
    * @return The name of the environment type.
    */
   default Environment getEnvironment() {
-    return isDevEnv() ? Environment.DEV : Environment.PROD;
+    return isDevEnv() ? Environment.DEVELOPMENT : Environment.PRODUCTION;
   }
 }

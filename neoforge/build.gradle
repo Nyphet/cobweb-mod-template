@@ -1,10 +1,6 @@
 plugins {
-  id "idea"
   id "java-library"
   id "net.neoforged.gradle.userdev" version "7.0.84"
-}
-base {
-  archivesName = "${mod_id_kebab}-neoforge-${minecraft_version}"
 }
 
 if (file("src/main/resources/META-INF/accesstransformer.cfg").exists()) {
@@ -36,6 +32,7 @@ sourceSets.main.resources { srcDir "src/generated/resources" }
 dependencies {
   implementation "net.neoforged:neoforge:${neoforge_version}"
   compileOnly project(":common")
+  api "it.crystalnest:cobweb-neoforge:${minecraft_version}-${cobweb_version}"
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code

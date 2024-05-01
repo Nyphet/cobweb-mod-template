@@ -7,30 +7,18 @@ public enum Platform {
   /**
    * Fabric loader identifier.
    */
-  FABRIC("fabric"),
+  FABRIC,
   /**
    * Fabric loader identifier.
    */
-  FORGE("forge"),
+  FORGE,
   /**
    * Fabric loader identifier.
    */
-  NEOFORGE("neoforge");
-
-  /**
-   * Platform name.
-   */
-  private final String name;
-
-  /**
-   * @param name This {@link #name}.
-   */
-  Platform(String name) {
-    this.name = name;
-  }
+  NEOFORGE;
 
   @Override
   public String toString() {
-    return name;
+    return this.name().toLowerCase();
   }
 }
