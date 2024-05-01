@@ -245,11 +245,11 @@ subprojects { subproject ->
       }
     }
     options {
-      debug = noPublish
       detectNewerJava = true
       forgeGradleIntegration = false
       fabricIntegration = isFabric
       detectFabricApi = isFabric
+      debug = noPublish
     }
   }
 
