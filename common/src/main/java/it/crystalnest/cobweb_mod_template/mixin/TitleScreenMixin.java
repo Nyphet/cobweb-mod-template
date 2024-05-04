@@ -1,6 +1,7 @@
 package it.crystalnest.cobweb_mod_template.mixin;
 
 import it.crystalnest.cobweb_mod_template.Constants;
+import it.crystalnest.cobweb_mod_template.platform.Services;
 import net.minecraft.client.gui.components.LogoRenderer;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +23,6 @@ public class TitleScreenMixin {
    */
   @Inject(method = "<init>(ZLnet/minecraft/client/gui/components/LogoRenderer;)V", at = @At(value = "TAIL"))
   private void onInit(boolean fading, LogoRenderer logoRenderer, CallbackInfo ci) {
-    Constants.LOGGER.info("Example mixin from " + Constants.PLATFORM.getPlatformName());
+    Constants.LOGGER.info("Example mixin from " + Services.PLATFORM.getPlatformName());
   }
 }
