@@ -1,7 +1,7 @@
 package it.crystalnest.cobweb_mod_template.platform.services;
 
-import it.crystalnest.cobweb_mod_template.platform.model.Environment;
-import it.crystalnest.cobweb_mod_template.platform.model.Platform;
+import it.crystalnest.cobweb.platform.model.Environment;
+import it.crystalnest.cobweb.platform.model.Platform;
 
 /**
  * Platform specific helper.

@@ -22,6 +22,7 @@ subprojects { subproject ->
 
   apply plugin: "java"
   apply plugin: "idea"
+  apply plugin: "java-library"
   apply plugin: "com.modrinth.minotaur"
   apply plugin: "me.hypherionmc.cursegradle"
   apply plugin: "com.github.breadmoirai.github-release"
@@ -107,6 +108,7 @@ subprojects { subproject ->
       "neoforge_version"             : neoforge_version,
       "neoforge_loader_version_range": neoforge_loader_version_range,
       "cobweb_version"               : cobweb_version,
+      "fcap_version"                 : fcap_version,
     ]
 
     filesMatching(["pack.mcmeta", "fabric.mod.json", "META-INF/mods.toml", "*.mixins.json"]) {

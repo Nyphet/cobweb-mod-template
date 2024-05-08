@@ -29,6 +29,7 @@ To complete the setup:
 - Change the [Support us](#support-us) section and the banner link.
 - Add your project CurseForge ID in the `gradle.properties`.
 - Replace the placeholder values in `api-keys.properties`.
+- Check out the configuration example and optionally remove it.
 - Update the changelog with proper release notes.
 - Run the task `common > Tasks > vanilla gradle > decompile`
 - Run the task `forge > Tasks > forgegradle runs > genIntellijRuns`

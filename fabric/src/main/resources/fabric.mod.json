@@ -29,7 +29,7 @@
     "fabric-api": "*",
     "minecraft": "${minecraft_version}",
     "java": ">=17",
-    "cobweb": "^${cobweb_version}"
+    "cobweb": "^${cobweb_version}",
+    "forgeconfigapiport": "~${fcap_version}"
   }
 }
-  
