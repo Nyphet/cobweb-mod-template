@@ -14,13 +14,15 @@
 
 ## **Description**
 
-Multiloader skeleton for Minecraft mods!  
+Multiloader skeleton for Minecraft mods!
 Built on [Jared's MultiLoaderTemplate](https://github.com/jaredlll08/MultiLoader-Template), with the addition of:
 
 - Tasks to publish on GitHub, Modrinth, and CurseForge.
 - [Cobweb](https://modrinth.com/mod/cobweb) API dependency.
 - A little bit more Javadoc.
 - Code style changes.
+
+***Note: the intended use of this template is to create a repository from it, and then update each branch with the content built by our [official generator](https://crystalnest.it/generator).***
 
 ## **Setup completion**
 
