@@ -209,34 +209,30 @@ subprojects { subproject ->
       draft = false
     }
     modrinthDepends {
+      required "cobweb"
       switch (loader) {
         case "Fabric":
           required "fabric-api"
-          required "cobweb"
           optional "forge-config-api-port"
           break
         case "Forge":
-          required "cobweb"
           optional "forge-config-api-port"
           break
         case "NeoForge":
-          required "cobweb"
           break
       }
     }
     curseDepends {
+      required "cobweb"
       switch (loader) {
         case "Fabric":
           required "fabric-api"
-          required "cobweb"
           optional "forge-config-api-port-fabric"
           break
         case "Forge":
-          required "cobweb"
           optional "forge-config-api-port-fabric"
           break
         case "NeoForge":
-          required "cobweb"
           break
       }
     }
