@@ -118,7 +118,7 @@ subprojects { subproject ->
   }
 
   def changelog_body = "See [Changelog](https://github.com/${github_user}/${mod_id_kebab}/blob/master/CHANGELOG.md#${minecraft_version.replaceAll('\\.', '')}-${mod_version.replaceAll('\\.', '')}---${new Date().format("yyyyMMdd")})."
-  def version_type = mod_version.replaceFirst("([0-9]+\\.?){4}-?", "") ?: "release"
+  def version_type = mod_version.replaceFirst("([0-9]+\\.?)+-?", "") ?: "release"
   def loader = "Common"
   switch (subproject.name) {
     case "fabric":
@@ -191,7 +191,9 @@ subprojects { subproject ->
     setDisableEmptyJarCheck(true) // Disable check for valid mod metadata entry in artifact, which could possibly mean that the jar is empty.
     setModrinthID(mod_id_kebab)
     setCurseID(curseforge_id)
-    setLoaders(noPublish ? "fabric" : loader) // Avoid using "common" as a loader: when configuring for common, set it to any other loader.
+    if (!noPublish) {
+      setLoaders(loader)
+    }
     setGameVersions(minecraft_version)
     setDisplayName("[${loader} - ${minecraft_version}] ${mod_title} v${mod_version}")
     setJavaVersions([JavaVersion.VERSION_17])
@@ -210,12 +212,15 @@ subprojects { subproject ->
       switch (loader) {
         case "Fabric":
           required "fabric-api"
+          required "cobweb"
           optional "forge-config-api-port"
           break
         case "Forge":
+          required "cobweb"
           optional "forge-config-api-port"
           break
         case "NeoForge":
+          required "cobweb"
           break
       }
     }
@@ -223,12 +228,15 @@ subprojects { subproject ->
       switch (loader) {
         case "Fabric":
           required "fabric-api"
+          required "cobweb"
           optional "forge-config-api-port-fabric"
           break
         case "Forge":
+          required "cobweb"
           optional "forge-config-api-port-fabric"
           break
         case "NeoForge":
+          required "cobweb"
           break
       }
     }
