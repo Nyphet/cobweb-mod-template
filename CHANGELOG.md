@@ -9,11 +9,11 @@ and this project adheres to [Forge Semantic Versioning](https://mcforge.readthed
 
 - Nothing new.
 
-## 1.20.4-1.0.0.0 - yyyy/mm/dd
+## 1.19.4-1.0.0.0 - yyyy/mm/dd
 
 - Release notes...
 
 [Unreleased]: https://github.com/crystal-nest/cobweb-mod-template
 [README]: https://github.com/crystal-nest/cobweb-mod-template#readme
 
-[1.20.4-1.0.0.0]: https://github.com/crystal-nest/cobweb-mod-template/releases/tag/v1.20.4-1.0.0.0
+[1.19.4-1.0.0.0]: https://github.com/crystal-nest/cobweb-mod-template/releases/tag/v1.19.4-1.0.0.0
