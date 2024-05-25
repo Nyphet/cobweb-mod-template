@@ -8,7 +8,7 @@ issueTrackerURL="https://github.com/${github_user}/${mod_id_kebab}/issues" #opti
   displayName = "${mod_title}" #mandatory
   updateJSONURL = "https://api.modrinth.com/updates/${mod_id_kebab}/forge_updates.json" #optional (see https://docs.neoforged.net/docs/misc/updatechecker/)
   displayURL = "https://github.com/${github_user}/${mod_id_kebab}/tree/${minecraft_version}" #optional (displayed in the mod UI)
-  logoFile = "${mod_id}.png" #optional
+  logoFile = "banner.png" #optional
   credits = "${credits}" #optional
   authors = "${mod_authors}" #optional
   description = '''${description}''' #mandatory (Supports multiline text)
@@ -22,5 +22,17 @@ issueTrackerURL="https://github.com/${github_user}/${mod_id_kebab}/issues" #opti
   modId = "minecraft"
   mandatory = true
   versionRange = "${minecraft_version_range}"
+  ordering = "NONE"
+  side = "BOTH"
+[[dependencies.${mod_id}]]
+  modId = "cobweb"
+  mandatory = true
+  versionRange = "[${cobweb_version},)"
+  ordering = "NONE"
+  side = "BOTH"
+[[dependencies.${mod_id}]]
+  modId = "forgeconfigapiport"
+  mandatory = true
+  versionRange = "[${fcap_version},)"
   ordering = "NONE"
   side = "BOTH"
