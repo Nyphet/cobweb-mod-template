@@ -1,11 +1,7 @@
 plugins {
-  id "idea"
-  id "java"
   id "org.spongepowered.gradle.vanilla" version "0.2.1-SNAPSHOT"
 }
-base {
-  archivesName = "${mod_id_kebab}-common-${minecraft_version}"
-}
+
 minecraft {
   version(minecraft_version)
   if (file("src/main/resources/${mod_id}.accesswidener").exists()) {
@@ -15,4 +11,6 @@ minecraft {
 
 dependencies {
   compileOnly group: "org.spongepowered", name: "mixin", version: "0.8.5"
+  implementation "it.crystalnest:cobweb-common:${minecraft_version}-${cobweb_version}"
+  implementation "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${fcap_version}"
 }

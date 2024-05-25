@@ -24,14 +24,6 @@ jobs:
     needs: [call-analyze-workflow, call-version-update-workflow]
     permissions: 
       contents: write
-    uses: crystal-nest/.github/.github/workflows/single_release.yml@main
-    with:
-      loader_forge: true
-      loader_fabric: true
-      loader_neoforge: true
-      loader_common: true
-      platform_maven: true
-      platform_github: true
-      platform_curseforge: true
-      platform_modrinth: true
+      packages: write
+    uses: crystal-nest/.github/.github/workflows/release.yml@main
     secrets: inherit

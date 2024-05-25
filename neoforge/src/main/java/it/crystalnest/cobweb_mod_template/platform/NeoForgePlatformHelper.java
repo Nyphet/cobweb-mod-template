@@ -1,6 +1,6 @@
 package it.crystalnest.cobweb_mod_template.platform;
 
-import it.crystalnest.cobweb_mod_template.platform.model.Platform;
+import it.crystalnest.cobweb.platform.model.Platform;
 import it.crystalnest.cobweb_mod_template.platform.services.PlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;

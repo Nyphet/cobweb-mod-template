@@ -1,11 +1,8 @@
 plugins {
-  id "idea"
   id "net.minecraftforge.gradle" version "[6.0,6.2)"
   id "org.spongepowered.mixin" version "0.7-SNAPSHOT"
 }
-base {
-  archivesName = "${mod_id_kebab}-forge-${minecraft_version}"
-}
+
 mixin {
   add(sourceSets.main, "${mod_id}.refmap.json")
   config("${mod_id}.mixins.json")
@@ -73,6 +70,8 @@ dependencies {
   minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
   compileOnly project(":common")
   annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+  implementation "it.crystalnest:cobweb-forge:${minecraft_version}-${cobweb_version}"
+  implementation(fg.deobf("fuzs.forgeconfigapiport:forgeconfigapiport-forge:${fcap_version}"))
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -90,6 +89,9 @@ processResources {
 }
 
 jar.finalizedBy("reobfJar")
+
+// Task seems bugged, breaks build because of mod dependencies in the Common project, with no apparent workaround.
+tasks.named('compileTestJava').get().setEnabled(false)
 
 sourceSets.each {
   def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
