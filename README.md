@@ -17,7 +17,7 @@
 Multiloader skeleton for Minecraft mods!
 Built on [Jared's MultiLoaderTemplate](https://github.com/jaredlll08/MultiLoader-Template), with the addition of:
 
-- Tasks to publish on GitHub, Modrinth, and CurseForge.
+- Tasks to publish on Maven, GitHub, Modrinth, and CurseForge.
 - [Cobweb](https://modrinth.com/mod/cobweb) API dependency.
 - A little bit more Javadoc.
 - Code style changes.
@@ -30,8 +30,7 @@ To complete the setup:
 
 - Change the [Support us](#support-us) section and the banner link.
 - Add your project CurseForge ID in the `gradle.properties`.
-- Replace the placeholder values in `api-keys.properties`.
-- Check out the configuration example and optionally remove it.
+- Check out the configuration example.
 - Update the changelog with proper release notes.
 - Run the task `common > Tasks > vanilla gradle > decompile`
 - Run the task `forge > Tasks > forgegradle runs > genIntellijRuns`
@@ -39,10 +38,10 @@ To complete the setup:
 ## Removing Platforms and Loaders
 
 While this template includes support for Fabric, Forge, and NeoForge, you can easily remove support for the ones you don't need.  
-This can be done by deleting the subproject folder and then removing it from the associated `include` in the `settings.gradle` file.
+This can be done by deleting the subproject folder and then removing it from the associated `include` in the `settings.gradle` file, along with deleting the related gradle properties.
 
-The same thing applies for the different publishing platforms, GitHub, Modrinth, and CurseForge.  
-To remove support for the ones you don't need just remove the plugin declaration and use in the root `build.gradle`.
+The same thing applies for the different publishing platforms, Maven, GitHub, Modrinth, and CurseForge.  
+To remove support for the ones you don't need just remove the section and properties regarding them.
 
 ## **License and right of use**
 
