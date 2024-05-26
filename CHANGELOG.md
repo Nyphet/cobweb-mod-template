@@ -9,7 +9,7 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## 1.20.4-1.0.0.0 - yyyy/mm/dd
+## 1.20.2-1.0.0.0 - yyyy/mm/dd
 
 - Release notes...
 
