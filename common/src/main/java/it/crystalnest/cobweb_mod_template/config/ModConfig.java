@@ -2,7 +2,7 @@ package it.crystalnest.cobweb_mod_template.config;
 
 import it.crystalnest.cobweb.api.config.CommonConfig;
 import it.crystalnest.cobweb_mod_template.Constants;
-import net.neoforged.neoforge.common.ModConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
  * Mod common configuration.
@@ -16,12 +16,12 @@ public final class ModConfig extends CommonConfig {
   /**
    * Config example value.
    */
-  private ModConfigSpec.BooleanValue example;
+  private ForgeConfigSpec.BooleanValue example;
 
   /**
    * @param builder configuration builder.
    */
-  private ModConfig(ModConfigSpec.Builder builder) {
+  private ModConfig(ForgeConfigSpec.Builder builder) {
     super(builder);
   }
 
@@ -35,7 +35,7 @@ public final class ModConfig extends CommonConfig {
   }
 
   @Override
-  protected void define(ModConfigSpec.Builder builder) {
+  protected void define(ForgeConfigSpec.Builder builder) {
     example = builder.comment(" Config example value").define("example", true);
   }
 }
