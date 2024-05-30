@@ -14,7 +14,7 @@
 
 ## **Description**
 
-Multiloader skeleton for Minecraft mods!
+Multiloader skeleton for Minecraft mods!  
 Built on [Jared's MultiLoaderTemplate](https://github.com/jaredlll08/MultiLoader-Template), with the addition of:
 
 - Tasks to publish on Maven, GitHub, Modrinth, and CurseForge.
