@@ -36,6 +36,7 @@ jobs:
   call-workflow:
     permissions: 
       contents: write
+      packages: write
     uses: crystal-nest/.github/.github/workflows/single_release.yml@main
     with:
       loader_forge: ${{ github.event.inputs.loader_forge }}
