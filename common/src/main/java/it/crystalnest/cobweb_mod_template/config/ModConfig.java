@@ -3,10 +3,12 @@ package it.crystalnest.cobweb_mod_template.config;
 import it.crystalnest.cobweb.api.config.CommonConfig;
 import it.crystalnest.cobweb_mod_template.Constants;
 import net.minecraftforge.common.ForgeConfigSpec;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * Mod common configuration.
  */
+@ApiStatus.Internal
 public final class ModConfig extends CommonConfig {
   /**
    * Mod common configuration.
