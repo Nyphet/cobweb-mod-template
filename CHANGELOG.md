@@ -9,11 +9,11 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## [1.0.0] - yyyy/mm/dd
+## [v1.0.0] - yyyy/mm/dd
 
 - Release notes...
 
 [Unreleased]: https://github.com/crystal-nest/cobweb-mod-template
 [README]: https://github.com/crystal-nest/cobweb-mod-template#readme
 
-[1.0.0]: https://github.com/crystal-nest/cobweb-mod-template/releases?q=1.0.0
+[v1.0.0]: https://github.com/crystal-nest/cobweb-mod-template/releases?q=1.0.0
